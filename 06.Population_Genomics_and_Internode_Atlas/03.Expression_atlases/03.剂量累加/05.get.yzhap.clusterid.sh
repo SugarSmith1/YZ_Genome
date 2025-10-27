@@ -1,0 +1,2 @@
+
+awk -F'\t' 'BEGIN{OFS="\t"; print "Cluster", "so.Hap_genes", "ss.Hap_genes"} NR==1 {for(i=1;i<=NF;i++){if($i=="Cluster") c=i; else if($i=="so.Hap_genes") a=i; else if($i=="ss.Hap_genes") b=i}} NR>1 {gsub(/so\.Hap\./,"",$a); gsub(/ss\.Hap\./,"",$b); print "cluster"$c, $a, $b}' /public/home/agis_xiazq/project/02.YZ/R2.SubGenome/03.allele_defined_subgenome/03.get-allele-table/genes_output.tsv > cluster.YZhap.id
